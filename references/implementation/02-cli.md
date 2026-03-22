@@ -44,7 +44,7 @@ export const colorize = (rich: boolean, color: (value: string) => string, value:
 import { theme } from "./terminal/theme.js";
 
 // 标题
-console.log(theme.heading("🦞 OpenClaw Configuration"));
+console.log(theme.heading("🦞 UI App Configuration"));
 
 // 成功/错误/警告
 console.log(theme.success("✓ Configuration saved"));

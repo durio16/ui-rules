@@ -54,7 +54,7 @@ export function formatCliBannerLine(version: string, options: BannerOptions = {}
   const commit = options.commit ?? resolveCommitHash({ env: options.env });
   const tagline = pickTagline(options);
   const rich = options.richTty ?? isRich();
-  const title = "🦞 OpenClaw";
+  const title = "🦞 UI App";
 
   if (rich) {
     return `${theme.heading(title)} ${theme.info(version)} ${theme.muted(

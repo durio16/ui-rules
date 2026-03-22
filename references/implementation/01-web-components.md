@@ -71,7 +71,7 @@ private inputRef = createRef<HTMLInputElement>();
 ```typescript
 // ui/src/ui/app.ts
 @customElement("openclaw-app")
-export class OpenClawApp extends LitElement {
+export class UIApp extends LitElement {
   @state() private view: ViewName = "chat";
   @state() private theme: ThemeMode = "system";
 
