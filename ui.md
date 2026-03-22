@@ -45,8 +45,8 @@ OpenClaw 采用**多层UI系统**，覆盖三个界面层级：
 
 ### 设计理念
 
-- **温暖的深色主题（Warm Dark）**为主，避免纯黑背景
-- **红色作为品牌标识色（Signature Red）** - `#ff5c5c` (深色) / `#dc2626` (浅色)
+- **温暖的浅色主题（Warm Light）**为默认，避免纯白背景
+- **红色作为品牌标识色（Signature Red）** - `#dc2626` (浅色默认) / `#ff5c5c` (深色)
 - **简洁、功能优先** - 最小化视觉干扰
 - **动画流畅但不花哨** - 使用 `ease-out` 缓动，时长 120-350ms
 - **一致的圆角和阴影** - 统一的视觉语言
@@ -74,137 +74,48 @@ export const LOBSTER_PALETTE = {
 } as const;
 ```
 
-### 2.2 Web UI 深色主题 (默认)
+### 2.2 Web UI 浅色主题 (默认)
 
 ```css
-:root {
-  /* ========== 背景层级 - 温暖的深色 ========== */
-  --bg: #12141a;              /* L1: 主背景 */
-  --bg-accent: #14161d;       /* L2: 强调背景 */
-  --bg-elevated: #1a1d25;     /* L3: 浮起层 */
-  --bg-hover: #262a35;        /* 悬停状态 */
-  --bg-muted: #262a35;        /* 柔和背景 */
-
-  /* ========== 卡片/表面 ========== */
-  --card: #181b22;
-  --card-foreground: #f4f4f5;
-  --card-highlight: rgba(255, 255, 255, 0.05);  /* 顶部内发光 */
-  --popover: #181b22;
-  --popover-foreground: #f4f4f5;
-
-  /* ========== 面板 ========== */
-  --panel: #12141a;
-  --panel-strong: #1a1d25;
-  --panel-hover: #262a35;
-  --chrome: rgba(18, 20, 26, 0.95);       /* 毛玻璃效果 */
-  --chrome-strong: rgba(18, 20, 26, 0.98);
-
-  /* ========== 文本 - 微暖色调 ========== */
-  --text: #e4e4e7;            /* 普通文本 */
-  --text-strong: #fafafa;     /* 强调文本/标题 */
-  --chat-text: #e4e4e7;       /* 聊天文本 */
-  --muted: #71717a;           /* 柔和文本 */
-  --muted-strong: #52525b;    /* 较强柔和文本 */
-  --muted-foreground: #71717a;
-
-  /* ========== 边框 ========== */
-  --border: #27272a;          /* 默认边框 */
-  --border-strong: #3f3f46;   /* 强调边框 */
-  --border-hover: #52525b;    /* 悬停边框 */
-  --input: #27272a;           /* 输入框边框 */
-  --ring: #ff5c5c;            /* 焦点环颜色 */
-
-  /* ========== 主品牌色 - 标志性红色 ========== */
-  --accent: #ff5c5c;
-  --accent-hover: #ff7070;
-  --accent-muted: #ff5c5c;
-  --accent-subtle: rgba(255, 92, 92, 0.15);    /* 微妙背景 */
-  --accent-foreground: #fafafa;
-  --accent-glow: rgba(255, 92, 92, 0.25);       /* 发光效果 */
-  --primary: #ff5c5c;
-  --primary-foreground: #ffffff;
-
-  /* ========== 第二强调色 - 青色 ========== */
-  --secondary: #1e2028;
-  --secondary-foreground: #f4f4f5;
-  --accent-2: #14b8a6;
-  --accent-2-muted: rgba(20, 184, 166, 0.7);
-  --accent-2-subtle: rgba(20, 184, 166, 0.15);
-
-  /* ========== 语义颜色 ========== */
-  --ok: #22c55e;                              /* 成功 */
-  --ok-muted: rgba(34, 197, 94, 0.75);
-  --ok-subtle: rgba(34, 197, 94, 0.12);
-
-  --destructive: #ef4444;
-  --destructive-foreground: #fafafa;
-
-  --warn: #f59e0b;                            /* 警告 */
-  --warn-muted: rgba(245, 158, 11, 0.75);
-  --warn-subtle: rgba(245, 158, 11, 0.12);
-
-  --danger: #ef4444;                          /* 危险 */
-  --danger-muted: rgba(239, 68, 68, 0.75);
-  --danger-subtle: rgba(239, 68, 68, 0.12);
-
-  --info: #3b82f6;                            /* 信息 */
-
-  /* ========== 焦点样式 ========== */
-  --focus: rgba(255, 92, 92, 0.25);
-  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--ring);
-  --focus-glow: 0 0 0 2px var(--bg), 0 0 0 4px var(--ring), 0 0 20px var(--accent-glow);
-
-  /* ========== 网格线 ========== */
-  --grid-line: rgba(255, 255, 255, 0.04);
-
-  /* ========== 主题切换动画坐标 ========== */
-  --theme-switch-x: 50%;
-  --theme-switch-y: 50%;
-
-  color-scheme: dark;
-}
-```
-
-### 2.3 Web UI 浅色主题
-
-```css
-:root[data-theme="light"] {
-  /* 背景 */
-  --bg: #fafafa;
-  --bg-accent: #f5f5f5;
-  --bg-elevated: #ffffff;
-  --bg-hover: #f0f0f0;
-  --bg-muted: #f0f0f0;
+::root {
+  /* ========== 背景层级 - 温暖的浅色 ========== */
+  --bg: #fafafa;              /* L1: 主背景 */
+  --bg-accent: #f5f5f5;       /* L2: 强调背景 */
+  --bg-elevated: #ffffff;     /* L3: 浮起层 */
+  --bg-hover: #f0f0f0;        /* 悬停状态 */
+  --bg-muted: #f0f0f0;        /* 柔和背景 */
   --bg-content: #f5f5f5;
 
-  /* 卡片 */
+  /* ========== 卡片/表面 ========== */
   --card: #ffffff;
   --card-foreground: #18181b;
   --card-highlight: rgba(0, 0, 0, 0.03);
   --popover: #ffffff;
   --popover-foreground: #18181b;
 
-  /* 面板 */
+  /* ========== 面板 ========== */
   --panel: #fafafa;
   --panel-strong: #f5f5f5;
   --panel-hover: #ebebeb;
   --chrome: rgba(250, 250, 250, 0.95);
   --chrome-strong: rgba(250, 250, 250, 0.98);
 
-  /* 文本 */
+  /* ========== 文本 ========== */
   --text: #3f3f46;
   --text-strong: #18181b;
   --chat-text: #3f3f46;
   --muted: #71717a;
   --muted-strong: #52525b;
+  --muted-foreground: #71717a;
 
-  /* 边框 */
+  /* ========== 边框 ========== */
   --border: #e4e4e7;
   --border-strong: #d4d4d8;
   --border-hover: #a1a1aa;
   --input: #e4e4e7;
+  --ring: #dc2626;
 
-  /* 主色 - 浅色主题用更深的红 */
+  /* ========== 主品牌色 - 标志性红色 ========== */
   --accent: #dc2626;
   --accent-hover: #ef4444;
   --accent-muted: #dc2626;
@@ -214,14 +125,14 @@ export const LOBSTER_PALETTE = {
   --primary: #dc2626;
   --primary-foreground: #ffffff;
 
-  /* 第二强调色 */
+  /* ========== 第二强调色 - 青色 ========== */
   --secondary: #f4f4f5;
   --secondary-foreground: #3f3f46;
   --accent-2: #0d9488;
   --accent-2-muted: rgba(13, 148, 136, 0.75);
   --accent-2-subtle: rgba(13, 148, 136, 0.12);
 
-  /* 语义颜色 */
+  /* ========== 语义颜色 ========== */
   --ok: #16a34a;
   --ok-muted: rgba(22, 163, 74, 0.75);
   --ok-subtle: rgba(22, 163, 74, 0.1);
@@ -239,21 +150,120 @@ export const LOBSTER_PALETTE = {
 
   --info: #2563eb;
 
-  /* 焦点 */
+  /* ========== 焦点样式 ========== */
   --focus: rgba(220, 38, 38, 0.2);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--ring);
   --focus-glow: 0 0 0 2px var(--bg), 0 0 0 4px var(--ring), 0 0 16px var(--accent-glow);
 
-  /* 网格线 */
+  /* ========== 网格线 ========== */
   --grid-line: rgba(0, 0, 0, 0.05);
 
-  /* 浅色阴影 */
+  /* ========== 阴影 ========== */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
   --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04);
   --shadow-glow: 0 0 24px var(--accent-glow);
 
+  /* ========== 主题切换动画坐标 ========== */
+  --theme-switch-x: 50%;
+  --theme-switch-y: 50%;
+
   color-scheme: light;
+}
+```
+
+### 2.3 Web UI 深色主题
+
+```css
+::root[data-theme="dark"] {
+  /* ========== 背景层级 - 温暖的深色 ========== */
+  --bg: #12141a;              /* L1: 主背景 */
+  --bg-accent: #14161d;       /* L2: 强调背景 */
+  --bg-elevated: #1a1d25;     /* L3: 浮起层 */
+  --bg-hover: #262a35;        /* 悬停状态 */
+  --bg-muted: #262a35;        /* 柔和背景 */
+
+  /* ========== 卡片/表面 ========== */
+  --card: #181b22;
+  --card-foreground: #f4f4f5;
+  --card-highlight: rgba(255, 255, 255, 0.05);
+  --popover: #181b22;
+  --popover-foreground: #f4f4f5;
+
+  /* ========== 面板 ========== */
+  --panel: #12141a;
+  --panel-strong: #1a1d25;
+  --panel-hover: #262a35;
+  --chrome: rgba(18, 20, 26, 0.95);
+  --chrome-strong: rgba(18, 20, 26, 0.98);
+
+  /* ========== 文本 ========== */
+  --text: #e4e4e7;
+  --text-strong: #fafafa;
+  --chat-text: #e4e4e7;
+  --muted: #71717a;
+  --muted-strong: #52525b;
+  --muted-foreground: #71717a;
+
+  /* ========== 边框 ========== */
+  --border: #27272a;
+  --border-strong: #3f3f46;
+  --border-hover: #52525b;
+  --input: #27272a;
+  --ring: #ff5c5c;
+
+  /* ========== 主品牌色 ========== */
+  --accent: #ff5c5c;
+  --accent-hover: #ff7070;
+  --accent-muted: #ff5c5c;
+  --accent-subtle: rgba(255, 92, 92, 0.15);
+  --accent-foreground: #fafafa;
+  --accent-glow: rgba(255, 92, 92, 0.25);
+  --primary: #ff5c5c;
+  --primary-foreground: #ffffff;
+
+  /* ========== 第二强调色 ========== */
+  --secondary: #1e2028;
+  --secondary-foreground: #f4f4f5;
+  --accent-2: #14b8a6;
+  --accent-2-muted: rgba(20, 184, 166, 0.7);
+  --accent-2-subtle: rgba(20, 184, 166, 0.15);
+
+  /* ========== 语义颜色 ========== */
+  --ok: #22c55e;
+  --ok-muted: rgba(34, 197, 94, 0.75);
+  --ok-subtle: rgba(34, 197, 94, 0.12);
+
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+
+  --warn: #f59e0b;
+  --warn-muted: rgba(245, 158, 11, 0.75);
+  --warn-subtle: rgba(245, 158, 11, 0.12);
+
+  --danger: #ef4444;
+  --danger-muted: rgba(239, 68, 68, 0.75);
+  --danger-subtle: rgba(239, 68, 68, 0.12);
+
+  --info: #3b82f6;
+
+  /* ========== 焦点样式 ========== */
+  --focus: rgba(255, 92, 92, 0.25);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--ring);
+  --focus-glow: 0 0 0 2px var(--bg), 0 0 0 4px var(--ring), 0 0 20px var(--accent-glow);
+
+  /* ========== 网格线 ========== */
+  --grid-line: rgba(255, 255, 255, 0.04);
+
+  /* ========== 阴影 ========== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --shadow-glow: 0 0 30px var(--accent-glow);
+
+  color-scheme: dark;
 }
 ```
 
